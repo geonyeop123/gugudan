@@ -1,36 +1,27 @@
 "use strict";
 const startBtn = document.getElementById("startBtn");
 const gameForm = document.querySelector(".js-gameForm");
+const timerText = document.querySelector(".js-timer");
 
 let gameStart = false;
 const HIDE_CN = "hide";
+let timer = 0;
 
-function handleShowGame() {
-  if (gameStart) {
-    startBtn.classList.add(HIDE_CN);
-    gameForm.classList.remove(HIDE_CN);
-  } else {
-    startBtn.classList.remove(HIDE_CN);
-    gameForm.classList.add(HIDE_CN);
-  }
+function delayGame(second) {
+  timer = second * 1000;
+  setInterval(handleTimer, 1000, second);
 }
 
-function timeHandler(ms) {
-  for (let i = 0; i < ms; i++) {
-    console.log("hi");
-  }
+function handleTimer(second) {
+  timerText.innerText = `00:${second}`;
+  second--;
 }
-
-function startTimer() {}
 
 function handleClickSB() {
-  gameStart = true;
-  // handleShowGame();
-  startTimer();
+  gameForm.classList.remove(HIDE_CN);
+  delayGame(3);
 }
 
 if (startBtn) {
   startBtn.addEventListener("click", handleClickSB);
 }
-
-setInterval(timeHandler(5), 1000);
