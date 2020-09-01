@@ -5,7 +5,7 @@ const gameForm = document.querySelector(".js-gameForm");
 let gameStart = false;
 const HIDE_CN = "hide";
 
-function handleStart() {
+function handleShowGame() {
   if (gameStart) {
     startBtn.classList.add(HIDE_CN);
     gameForm.classList.remove(HIDE_CN);
@@ -15,11 +15,22 @@ function handleStart() {
   }
 }
 
+function timeHandler(ms) {
+  for (let i = 0; i < ms; i++) {
+    console.log("hi");
+  }
+}
+
+function startTimer() {}
+
 function handleClickSB() {
   gameStart = true;
-  handleStart();
+  // handleShowGame();
+  startTimer();
 }
 
 if (startBtn) {
   startBtn.addEventListener("click", handleClickSB);
 }
+
+setInterval(timeHandler(5), 1000);
